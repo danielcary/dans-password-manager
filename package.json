@@ -1,0 +1,28 @@
+{
+  "name": "encrypted-pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "rebuild": "electron-rebuild -f -w yourmodule",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "electron": "^1.7.9",
+    "electron-context-menu": "^0.9.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "electron-rebuild": "^1.6.0",
+    "react": "^16.0.0",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.0.0",
+    "scryptsy": "^2.0.0",
+    "webpack": "^3.8.1"
+  }
+}
