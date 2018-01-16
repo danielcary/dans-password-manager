@@ -2,22 +2,22 @@ import * as fs from 'fs';
 import * as AES from 'crypto-js/aes';
 import * as SHA256 from 'crypto-js/sha256';
 import { enc, lib } from 'crypto-js';
-import * as scrypt from 'scryptsy';
+import * as scrypt from 'scrypt-async';
 
-const kdfNParams = {
-    low: 2 ** 15,
-    medium: 2 ** 18,
-    high: 2 ** 20
+const kdfParams = {
+    low: { N: 2 ** 15, r: 8, p: 1, dkLen: 64, encoding: 'hex' },
+    medium: { N: 2 ** 18, r: 8, p: 1, dkLen: 64, encoding: 'hex' },
+    high: { N: 2 ** 20, r: 8, p: 1, dkLen: 64, encoding: 'hex' },
 };
-
 
 export function hashPassword(password, strength, salt) {
     return new Promise((resolve, reject) => {
         salt = salt || lib.WordArray.random(16).toString(enc.Hex);
-        let hashedPassword = scrypt(password, salt, kdfNParams[strength], 10, 1, 64);
-        resolve({
-            key: SHA256(hashedPassword.toString('hex')),
-            salt: salt
+        scrypt(password, salt, kdfParams[strength], (hashedPassword) => {
+            resolve({
+                key: SHA256(hashedPassword),
+                salt: salt
+            });
         });
     });
 }
@@ -31,10 +31,10 @@ export function decryptFile(fileData, hashedPassword) {
         // get iv and ciphertext
         let iv = enc.Hex.parse(fileData.iv);
         let ciphertext = fileData.data;
-        
+
         // try to decrypt with password
         let plaintext = AES.decrypt(ciphertext, hashedPassword.key, { iv: iv });
-        
+
         // extract and return data
         resolve(JSON.parse(plaintext.toString(enc.Utf8)));
     });
