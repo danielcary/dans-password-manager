@@ -1,3 +1,9 @@
+/*
+ * Dan's Password Manager
+ * file.js
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
 import * as fs from 'fs';
 import * as AES from 'crypto-js/aes';
 import * as SHA256 from 'crypto-js/sha256';
@@ -7,7 +13,7 @@ import * as scrypt from 'scrypt-async';
 const kdfParams = {
     low: { N: 2 ** 15, r: 8, p: 1, dkLen: 64, encoding: 'hex' },
     medium: { N: 2 ** 18, r: 8, p: 1, dkLen: 64, encoding: 'hex' },
-    high: { N: 2 ** 20, r: 8, p: 1, dkLen: 64, encoding: 'hex' },
+    high: { N: 2 ** 20, r: 8, p: 1, dkLen: 64, encoding: 'hex' }
 };
 
 export function hashPassword(password, strength, salt) {

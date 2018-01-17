@@ -1,3 +1,9 @@
+/*
+ * Dan's Password Manager
+ * PasswordModal.jsx
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
 import * as React from 'react';
 import * as  ReactDOM from 'react-dom';
 import { Grid, Row, Col, Button, FormControl, ControlLabel, Modal, Radio, FormGroup } from 'react-bootstrap';
@@ -23,7 +29,7 @@ export default class PasswordModal extends React.Component {
             <Modal show onHide={() => this.props.onClose()}>
                 <Modal.Header closeButton>Enter Password</Modal.Header>
                 <Modal.Body>
-                    <form>
+                    <form onSubmit={() => this.submit()}>
                         <FormGroup>
                             <ControlLabel>Password</ControlLabel>
                             <FormControl

@@ -1,7 +1,13 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+/*
+ * Dan's Password Manager
+ * main.js (based off main.js from https://electronjs.org/docs/tutorial/quick-start)
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
+const { app, BrowserWindow, ipcMain, Menu, dialog, shell } = require('electron');
 const path = require('path');
 const url = require('url');
-require('electron-context-menu')();
+require('electron-context-menu')({ showInspectElement: false });
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -19,6 +25,8 @@ function createWindow() {
         slashes: true
     }))
 
+    win.setTitle("Dan's Password Manager");
+
     win.setMenu(Menu.buildFromTemplate([
         {
             label: 'File',
@@ -30,6 +38,21 @@ function createWindow() {
                 { type: 'separator' },
                 { role: 'quit' }
             ]
+        },
+        {
+            label: 'Help',
+            submenu: [
+                { label: 'Github Repo', click: () => shell.openExternal('https://github.com/danielcary/dans-password-manager') },
+                { type: 'separator' },
+                {
+                    label: 'About',
+                    click: () => dialog.showMessageBox(win, {
+                        type: "info",
+                        title: "About",
+                        message: "Version 1.0\nMade by Daniel Cary"
+                    })
+                }
+            ]
         }
     ]));
 
@@ -39,7 +62,7 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         win = null
-    })
+    });
 }
 
 
@@ -47,7 +70,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -56,7 +79,7 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit()
     }
-})
+});
 
 app.on('activate', () => {
     // On macOS it's common to re-create a window in the app when the
@@ -64,7 +87,4 @@ app.on('activate', () => {
     if (win === null) {
         createWindow()
     }
-})
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+});

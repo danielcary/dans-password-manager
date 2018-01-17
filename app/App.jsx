@@ -1,3 +1,9 @@
+/*
+ * Dan's Password Manager
+ * App.jsx
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
 import * as React from 'react';
 import * as  ReactDOM from 'react-dom';
 import { remote, ipcRenderer } from 'electron';
@@ -8,7 +14,7 @@ import PasswordModal from './PasswordModal';
 import Entry from './Entry';
 import * as File from './file';
 
-const fileDialogOptions = { filters: [{ name: "enc pw", extensions: ['enc'] }] };
+const fileDialogOptions = { filters: [{ name: "Password List", extensions: ['dpwm'] }] };
 
 class App extends React.Component {
 
