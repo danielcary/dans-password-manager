@@ -1,3 +1,9 @@
+/*
+ * Dan's Password Manager
+ * PasswordModal.jsx
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
 import * as React from 'react';
 import * as  ReactDOM from 'react-dom';
 import { Grid, Row, Col, Button, FormControl, ControlLabel, Modal, Radio, FormGroup } from 'react-bootstrap';

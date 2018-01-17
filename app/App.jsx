@@ -1,3 +1,9 @@
+/*
+ * Dan's Password Manager
+ * App.jsx
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
 import * as React from 'react';
 import * as  ReactDOM from 'react-dom';
 import { remote, ipcRenderer } from 'electron';

@@ -1,3 +1,9 @@
+/*
+ * Dan's Password Manager
+ * file.js
+ * Copyright 2017 Daniel Cary
+ * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
+*/
 import * as fs from 'fs';
 import * as AES from 'crypto-js/aes';
 import * as SHA256 from 'crypto-js/sha256';
