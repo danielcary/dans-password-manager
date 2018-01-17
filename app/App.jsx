@@ -8,7 +8,7 @@ import PasswordModal from './PasswordModal';
 import Entry from './Entry';
 import * as File from './file';
 
-const fileDialogOptions = { filters: [{ name: "enc pw", extensions: ['enc'] }] };
+const fileDialogOptions = { filters: [{ name: "Password List", extensions: ['dpwm'] }] };
 
 class App extends React.Component {
 

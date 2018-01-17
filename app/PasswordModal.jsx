@@ -23,7 +23,7 @@ export default class PasswordModal extends React.Component {
             <Modal show onHide={() => this.props.onClose()}>
                 <Modal.Header closeButton>Enter Password</Modal.Header>
                 <Modal.Body>
-                    <form>
+                    <form onSubmit={() => this.submit()}>
                         <FormGroup>
                             <ControlLabel>Password</ControlLabel>
                             <FormControl

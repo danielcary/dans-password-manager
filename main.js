@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, dialog, shell } = require('electron');
 const path = require('path');
 const url = require('url');
 require('electron-context-menu')();
@@ -19,6 +19,8 @@ function createWindow() {
         slashes: true
     }))
 
+    win.setTitle("Dan's Password Manager");
+
     win.setMenu(Menu.buildFromTemplate([
         {
             label: 'File',
@@ -29,6 +31,21 @@ function createWindow() {
                 { label: 'Save As...', accelerator: 'Ctrl+Shift+S', click: () => win.webContents.send('cmd-save-as') },
                 { type: 'separator' },
                 { role: 'quit' }
+            ]
+        },
+        {
+            label: 'Help',
+            submenu: [
+                { label: 'Github Repo', click: () => shell.openExternal('https://github.com/danielcary/dans-password-manager') },
+                { type: 'separator' },
+                {
+                    label: 'About',
+                    click: () => dialog.showMessageBox(win, {
+                        type: "info",
+                        title: "About",
+                        message: "Version 1.0\nMade by Daniel Cary"
+                    })
+                }
             ]
         }
     ]));
