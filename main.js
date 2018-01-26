@@ -1,7 +1,7 @@
 /*
  * Dan's Password Manager
  * main.js (based off main.js from https://electronjs.org/docs/tutorial/quick-start)
- * Copyright 2017 Daniel Cary
+ * Copyright 2018 Daniel Cary
  * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
 */
 const { app, BrowserWindow, ipcMain, Menu, dialog, shell } = require('electron');

@@ -1,7 +1,7 @@
 /*
  * Dan's Password Manager
  * file.js
- * Copyright 2017 Daniel Cary
+ * Copyright 2018 Daniel Cary
  * Licensed under MIT (https://github.com/danielcary/dans-password-manager/blob/master/LICENSE)
 */
 import * as fs from 'fs';
